@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossy Voxel</title>
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="game-shell">
+	<section class="hud" aria-label="Game status">
+		<div class="hud__brand">
+			<div class="hud__title-wrap">
+				<p class="hud__eyebrow">Arcade hopper</p>
+				<h1 class="hud__title">Crossy Voxel</h1>
+			</div>
+			<button class="hud__button" id="muteButton" type="button" aria-pressed="false" aria-label="Toggle sound">
+        <i data-lucide="volume-2"></i>
+      </button>
+		</div>
+
+		<div class="hud__stats">
+			<article class="stat-card">
+				<span class="stat-card__label">Score</span>
+				<strong class="stat-card__value" id="scoreValue">0</strong>
+			</article>
+			<article class="stat-card">
+				<span class="stat-card__label">Best</span>
+				<strong class="stat-card__value" id="bestValue">0</strong>
+			</article>
+			<article class="stat-card">
+				<span class="stat-card__label">State</span>
+				<strong class="stat-card__value stat-card__value--small" id="stateValue">Ready</strong>
+			</article>
+		</div>
+	</section>
+
+	<section class="game-stage" aria-label="Crossy Voxel game area">
+		<div id="gameCanvas" class="game-stage__canvas"></div>
+
+		<div class="overlay overlay--start" id="startOverlay">
+			<div class="overlay__panel">
+				<p class="overlay__kicker">Hop. Dodge. Drift.</p>
+				<h2 class="overlay__title">Make it absurdly far.</h2>
+				<p class="overlay__text">Cross roads, ride logs, avoid bumpers, and keep climbing for a bigger score.</p>
+				<div class="overlay__actions">
+					<button class="overlay__button overlay__button--primary" id="startButton" type="button">Start game</button>
+					<button class="overlay__button" id="howButton" type="button">How to play</button>
+				</div>
+				<ul class="overlay__tips" aria-label="Controls">
+					<li><i data-lucide="arrow-up"></i><span>WASD or arrow keys to move</span></li>
+					<li><i data-lucide="smartphone"></i><span>Swipe or use touch buttons on mobile</span></li>
+					<li><i data-lucide="waves"></i><span>Ride logs across rivers or splash out</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="overlay overlay--hidden" id="gameOverOverlay" aria-hidden="true">
+			<div class="overlay__panel overlay__panel--compact">
+				<p class="overlay__kicker">Game over</p>
+				<h2 class="overlay__title">Splat happens.</h2>
+				<p class="overlay__text" id="gameOverText">You made it 0 rows.</p>
+				<div class="overlay__actions">
+					<button class="overlay__button overlay__button--primary" id="restartButton" type="button">Hop again</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="touch-controls" aria-label="Touch controls">
+			<button class="touch-controls__button touch-controls__button--up" data-move="up" type="button" aria-label="Move up">
+        <i data-lucide="arrow-up"></i>
+      </button>
+			<button class="touch-controls__button touch-controls__button--left" data-move="left" type="button" aria-label="Move left">
+        <i data-lucide="arrow-left"></i>
+      </button>
+			<button class="touch-controls__button touch-controls__button--down" data-move="down" type="button" aria-label="Move down">
+        <i data-lucide="arrow-down"></i>
+      </button>
+			<button class="touch-controls__button touch-controls__button--right" data-move="right" type="button" aria-label="Move right">
+        <i data-lucide="arrow-right"></i>
+      </button>
+		</div>
+	</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
